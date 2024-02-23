@@ -13,10 +13,33 @@ void lista();
 
 
 int main(int argc, char *argv[]) {
-	cadastro();
-	lista();
-	//pesquisa();
-	
+
+	do{
+		system("cls");
+		printf("\n----Menu----\n1 - Cadastrar \n2 - Listar todos \n3 -Pesquisar \n4 - Sair");
+		scanf("%d", &op);
+		switch(op){
+		
+		case 1:
+			cadastro();
+			break;
+		case 2:
+			lista();
+			break;
+		case 3:
+			pesquisa();
+			break;
+		case 4:
+			system("exit");
+			break;
+		default:
+			printf("Opcao Invalida!");
+			getchar();
+			getchar();
+			break;
+		
+		}
+	}while(op != 4);
 	
 }
 
@@ -27,8 +50,13 @@ void lista(){
 		if(cpf[i] > 0){
 			printf("\nName: %s \nEmail: %s \nCPF: %d", nome[i], email[i], cpf[i]);	
 		}
-		
+		else{
+			break;
+		}
 	}
+	getchar();
+	getchar();
+	
 }
 
 void cadastro(){
