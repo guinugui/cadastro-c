@@ -9,13 +9,26 @@ int op;
 
 void cadastro();
 void pesquisa();
+void lista();
 
 
 int main(int argc, char *argv[]) {
 	cadastro();
-	pesquisa();
+	lista();
+	//pesquisa();
 	
 	
+}
+
+void lista(){
+	int i;
+	for(i=0;i<SIZE;i++){
+		
+		if(cpf[i] > 0){
+			printf("\nName: %s \nEmail: %s \nCPF: %d", nome[i], email[i], cpf[i]);	
+		}
+		
+	}
 }
 
 void cadastro(){
