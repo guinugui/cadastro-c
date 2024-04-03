@@ -1,12 +1,20 @@
+/*
+Essas são as bibliotecas usadas para poder rodar o programa
+*/
 # include <stdio.h> // Inclui a biblioteca padrão de entrada e saída
 # include <string.h> // Inclui a biblioteca para manipulação de strings
 # include <stdlib.h> // Inclui a biblioteca padrão para funções de alocação de memória, conversões de tipos e outras
 # include <locale.h> // Inclui a biblioteca para configurações de localização
 
+/*
+Vetores do tipo char que pode ter 45 colunas e 65 caracteres
+*/
 char nome [45][65]; // Declara uma matriz para armazenar nomes de até 45 clientes, cada nome pode ter até 64 caracteres (65 para o caractere nulo)
 char email [45][65]; // Declara uma matriz para armazenar emails de até 45 clientes, cada email pode ter até 64 caracteres (65 para o caractere nulo)
 char cpf[45][14]; // Declara uma matriz para armazenar CPFs de até 45 clientes, cada CPF pode ter até 13 caracteres (14 para o caractere nulo)
-
+/*
+Declarando uma funcao para depois poder chamar ela na funcao main
+*/
 void menu(); // Declaração da função menu
 void cadastro(); // Declaração da função cadastro
 void pesquisa(); // Declaração da função pesquisa
@@ -20,12 +28,16 @@ void gravarcsv(); // Declaração da função para gravar os dados dos clientes em u
 void lercsv(); // Declaração da função para ler os dados dos clientes a partir de um arquivo CSV.
 void cabecalho(char Titulo[50]); // Declaração da função para imprimir um cabeçalho, recebendo um título como parâmetro, que é um array de caracteres (string) com até 50 caracteres.
 
-
+/*
+Inicio da funcao main, onde e o ponto de partida para o codigo
+*/
 int main(void){ //ponto de entrada principal de um programa.
     setlocale(LC_ALL, "Portuguese"); // Define o local para Português
     menu(); // Chama a função menu para exibir o menu principal
 }
-
+/*
+Essa funçao e o cabecalho, onde so apresenta um modelo mais interativo para o cliente
+*/
 void cabecalho(char Titulo[50]){
     system("cls"); // Limpa a tela do console
     int t = strlen(Titulo); // Calcula o comprimento da string Titulo
@@ -41,7 +53,9 @@ void cabecalho(char Titulo[50]){
     
     printf("|--------------------------------------------------------------------------------|\n"); // Imprime outra linha de separação
 }
-
+/*
+Funcao menu tem a funcao de apresentar todas a funcoes disponiveis no sistema
+*/
 void menu(){
     int menu; // Declaração da variável menu para armazenar a opção do usuário
     char t[50]=""; // Declaração de uma string vazia t com tamanho máximo de 50 caracteres
@@ -79,7 +93,9 @@ void menu(){
         }
     } while(menu<4); // Continua o loop enquanto a opção do menu for menor que 4
 }
-
+/*
+Funcao cadastro e onde voce declara o nome, email, cpf da pessoa e guarda em um vetor
+*/
 void cadastro(){
     static int linha; // Declaração de uma variável estática linha para controlar o índice de cadastro
     int opc; // Declaração da variável opc para armazenar a opção do usuário
@@ -107,6 +123,9 @@ void cadastro(){
     };
 }
 
+/*
+funcao pesquisa e um modo aonde a pessoa pode pesquisar para encontrar a pessoa cadastrada dentro do sistema
+*/
 void pesquisa(){
     int i, opc; // Declaração das variáveis i e opc para controle e opção do usuário
     char emailP[65], nomeP[65], cpfP[14]; // Declaração das variáveis para armazenar dados de pesquisa
@@ -144,7 +163,9 @@ void pesquisa(){
     } while (opc == 1); // Continua o loop enquanto o usuário desejar
     return;
 }
-
+/*
+pesquisa Cpf tem o objetivo de pesquisa por cpf 
+*/
 void pesquisaCpf(char cpfP[14]){
     char t[50]="PESQUISA CPF "; // Declaração de uma string t para o cabeçalho
     system("cls"); // Limpa a tela do console
@@ -158,7 +179,9 @@ void pesquisaCpf(char cpfP[14]){
     }
     return; // Retorna ao final da função
 }
-
+/*
+pesquisa Cpf tem o objetivo de pesquisa por email 
+*/
 void pesquisaEmail(char emailP[65]){
     char t[50]="PESQUISA EMAIL "; // Declaração de uma string t para o cabeçalho
     system("cls"); // Limpa a tela do console
@@ -171,6 +194,9 @@ void pesquisaEmail(char emailP[65]){
     }
     return; // Retorna ao final da função
 }
+/*
+pesquisa Cpf tem o objetivo de pesquisa por nome
+*/
 void pesquisaNome(char nomeP[65]){
     char t[50]="PESQUISA NOME "; // Declaração de uma string t para o cabeçalho
     system("cls"); // Limpa a tela do console
@@ -183,7 +209,9 @@ void pesquisaNome(char nomeP[65]){
     }
     return; // Retorna ao final da função
 }
-
+/*
+funcao listar tem que mostrar todos os cadastro de pessoas, completo
+*/
 void lista(){
     int i; // Declaração da variável i para controle do loop
     int opc; // Declaração da variável opc para armazenar a opção do usuário
@@ -206,7 +234,9 @@ void lista(){
         printf("\nOpção Inválida."); // Exibe uma mensagem de opção inválida
     }
 }
-
+/*
+funcao gravar tem por objetivo gravar em um arquivo csv todas os cadastro feito pelo sistema
+*/
 void gravarcsv(){
     int i = 0; // Inicialização da variável i
     char str[144]=""; // Declaração de uma string str para armazenar os dados formatados
@@ -233,7 +263,9 @@ void gravarcsv(){
     fclose(file); // Fecha o arquivo
     menu(); // Retorna ao menu principal
 }
-
+/*
+funcao ler vai ler todo o arquivo csv e printar na tela cada cadastro lido dentro do arquivo csv
+*/
 void lercsv(){
     FILE *file; // Declaração de um ponteiro para arquivo
     char linha[150]; // Declaração de uma string para armazenar cada linha lida do arquivo
